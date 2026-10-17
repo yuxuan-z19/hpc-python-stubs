@@ -9,8 +9,7 @@ Supported algorithms: LZ4, Snappy, Zstd, Cascaded, Deflate, GDeflate, ANS, Bitco
 See: https://docs.nvidia.com/cuda/nvcomp/py_api.html
 """
 
-from collections.abc import Callable
-from typing import Any, ClassVar, Self, overload
+from typing import Any, Callable, ClassVar, Self, overload
 
 import numpy
 
@@ -531,9 +530,7 @@ class Codec:
         ...
 
     @overload
-    def decompression_config(
-        self, compression_config: CompressConfig
-    ) -> DecompressConfig:
+    def decompression_config(self, compression_config: CompressConfig) -> DecompressConfig:
         """Build a decompression config directly from a compression config.
 
         The resulting ``DecompressConfig`` is reusable across any compressed
@@ -624,12 +621,7 @@ class Codec:
     # -- encode --------------------------------------------------------------
 
     @overload
-    def encode(
-        self,
-        array: Array,
-        out: Array | None = None,
-        compression_config: CompressConfig | None = None,
-    ) -> Array:
+    def encode(self, array: Array, out: Array | None = None, compression_config: CompressConfig | None = None) -> Array:
         """Encode (compress) a single ``Array``.
 
         Parameters:
@@ -650,10 +642,7 @@ class Codec:
 
     @overload
     def encode(
-        self,
-        srcs: list[Array],
-        out: list[Array] | None = None,
-        compression_config: CompressConfig | None = None,
+        self, srcs: list[Array], out: list[Array] | None = None, compression_config: CompressConfig | None = None
     ) -> list[Array]:
         """Encode (compress) a batch of ``Array`` objects.
 
@@ -936,9 +925,7 @@ def from_dlpack(source: object, cuda_stream: int = 0) -> Array:
     """
     ...
 
-def set_device_allocator(
-    allocator: Callable[[int, CudaStream], object] | None = ...,
-) -> None:
+def set_device_allocator(allocator: Callable[[int, CudaStream], object] | None = ...) -> None:
     """Set the allocator for future device (GPU) allocations.
 
     The allocator signature is::
@@ -957,9 +944,7 @@ def set_device_allocator(
     """
     ...
 
-def set_host_allocator(
-    allocator: Callable[[int, CudaStream], object] | None = ...,
-) -> None:
+def set_host_allocator(allocator: Callable[[int, CudaStream], object] | None = ...) -> None:
     """Set the allocator for future non-pinned host allocations.
 
     This is primarily intended for potentially large allocations such as those
@@ -975,9 +960,7 @@ def set_host_allocator(
     """
     ...
 
-def set_pinned_allocator(
-    allocator: Callable[[int, CudaStream], object] | None = ...,
-) -> None:
+def set_pinned_allocator(allocator: Callable[[int, CudaStream], object] | None = ...) -> None:
     """Set the allocator for future pinned host allocations.
 
     The allocator must allocate host-accessible (pinned) memory.  For

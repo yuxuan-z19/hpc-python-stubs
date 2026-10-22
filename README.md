@@ -20,7 +20,7 @@ This repository provides `.pyi` files for CUDA Python packages/bindings that do 
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/<your-username>/hpc-python-stubs.git
+git clone https://github.com/yuxuan-z19/hpc-python-stubs.git
 ```
 
 ### 2. Add `typings/` to Your Type Checker Configuration
